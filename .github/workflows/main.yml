@@ -67,7 +67,7 @@ jobs:
             libxi-dev libxxf86vm-dev libxfixes-dev libxrender-dev \
             libx11-dev libxext-dev libpython3-dev \
             libjpeg-dev libpng-dev libtiff-dev \
-            libopenexr-dev \
+            libopenexr-dev libpulse-dev libpipewire-0.3-dev \
             libfreetype6-dev libfontconfig1-dev \
             libepoxy-dev libgl1-mesa-dev libgles2-mesa-dev \
             libsqlite3-dev \
