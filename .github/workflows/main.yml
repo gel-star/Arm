@@ -75,6 +75,8 @@ jobs:
             libxkbcommon-dev \
             libavcodec-dev libavformat-dev libavdevice-dev \
             libavutil-dev libswscale-dev libswresample-dev
+            sudo snap install yasm --classic
+
 
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
