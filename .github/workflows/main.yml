@@ -129,12 +129,15 @@ jobs:
       - name: Check version
         run: libtool --version
 
-      - name: Regenerate autotools macros for SQLite
+      - name: Fix libtool macros for SQLite
         run: |
-          cd build/sqlite/src/external_sqlite
+          SQLITE_DIR=$(find . -type d -path "*/external_sqlite" | head -n 1)
+          echo "Found SQLite dir: $SQLITE_DIR"
+          cd "$SQLITE_DIR"
           aclocal
           libtoolize --force
           autoreconf -fi
+
               
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
