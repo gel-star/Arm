@@ -98,6 +98,16 @@ jobs:
             echo "MESA package already exists."
           fi
 
+      - name: Fix GMP source (pre-download)
+        run: |
+          mkdir -p /home/runner/work/Arm/build_linux/deps_aarch64/packages/
+          if [ ! -f /home/runner/work/Arm/build_linux/deps_aarch64/packages/gmp-6.2.1.tar.xz ]; then
+            echo "Downloading GMP from fast mirror..."
+            wget -q https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz \
+              -O /home/runner/work/Arm/build_linux/deps_aarch64/packages/gmp-6.2.1.tar.xz
+          else
+            echo "GMP package already exists."
+          fi
           
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
