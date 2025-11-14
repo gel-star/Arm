@@ -109,6 +109,14 @@ jobs:
             echo "GMP package already exists."
           fi
           
+      - name: Fix libtool mismatch for SQLite
+        run: |
+          if [ -d "build_linux/deps/external/sqlite" ]; then
+            echo "Regenerating autotools for SQLite..."
+            cd build_linux/deps/external/sqlite
+            autoreconf -fi || true
+          fi
+          
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
       # -------------------------------------------------------
