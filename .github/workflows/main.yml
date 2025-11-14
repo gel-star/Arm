@@ -78,11 +78,11 @@ jobs:
           
       - name: Fix GLU source (pre-download)
         run: |
-          mkdir -p build_linux_aarch64/deps_aarch64/packages/
-          if [ ! -f build_linux_aarch64/deps_aarch64/packages/glu-9.0.1.tar.xz ]; then
+          mkdir -p /home/runner/work/Arm/build_linux/deps_aarch64/packages/
+          if [ ! -f /home/runner/work/Arm/build_linux/deps_aarch64/packages/glu-9.0.1.tar.xz ]; then
             echo "Downloading GLU from HTTP mirror..."
             wget -q https://archive.mesa3d.org/glu/glu-9.0.1.tar.xz \
-              -O build_linux_aarch64/deps_aarch64/packages/glu-9.0.1.tar.xz
+              -O /home/runner/work/Arm/build_linux/deps_aarch64/packages/glu-9.0.1.tar.xz
           else
             echo "GLU package already exists."
           fi
