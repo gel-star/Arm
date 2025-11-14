@@ -72,7 +72,7 @@ jobs:
             libepoxy-dev libgl1-mesa-dev libgles2-mesa-dev \
             libsqlite3-dev \
             libwayland-dev wayland-protocols \
-            libxkbcommon-dev \
+            libxkbcommon-dev libasound2 libasound2-dev libdbus-1-dev \      
             libavcodec-dev libavformat-dev libavdevice-dev \
             libavutil-dev libswscale-dev libswresample-dev
           
