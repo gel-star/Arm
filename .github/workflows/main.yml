@@ -128,7 +128,14 @@ jobs:
 
       - name: Check version
         run: libtool --version
-          
+
+       - name: Regenerate autotools macros for SQLite
+        run: |
+          cd build/sqlite/src/external_sqlite
+          aclocal
+          libtoolize --force
+          autoreconf -fi
+         
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
       # -------------------------------------------------------
