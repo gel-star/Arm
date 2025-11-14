@@ -86,6 +86,19 @@ jobs:
           else
             echo "GLU package already exists."
           fi
+
+      - name: Fix MESA source (pre-download)
+        run: |
+          mkdir -p /home/runner/work/Arm/build_linux/deps_aarch64/packages/
+          if [ ! -f /home/runner/work/Arm/build_linux/deps_aarch64/packages/mesa-23.3.0.tar.xz ]; then
+            echo "Downloading MESA from HTTP mirror..."
+            wget -q https://archive.mesa3d.org/mesa-23.3.0.tar.xz \
+              -O /home/runner/work/Arm/build_linux/deps_aarch64/packages/mesa-23.3.0.tar.xz
+          else
+            echo "MESA package already exists."
+          fi
+
+          
       # -------------------------------------------------------
       # 5. Build Blender deps (USD, OIIO, OSL, etc.)
       # -------------------------------------------------------
