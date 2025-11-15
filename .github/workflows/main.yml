@@ -129,22 +129,29 @@ jobs:
       - name: Check version
         run: libtool --version
 
-      - name: Override system libtool macros
+      - name: Override libtool system
         run: |
+          echo "LIBTOOL=/usr/local/bin/libtool" >> $GITHUB_ENV
+          echo "CMAKE_LIBTOOL=/usr/local/bin/libtool" >> $GITHUB_ENV
+          echo "ac_cv_path_LIBTOOL=/usr/local/bin/libtool" >> $GITHUB_ENV
+  
           sudo cp /usr/local/share/aclocal/libtool.m4 /usr/share/aclocal/
           sudo cp /usr/local/share/aclocal/lt*.m4 /usr/share/aclocal/
+  
+          /usr/local/bin/libtool --version
+          libtool --version || true
 
-              
-      # -------------------------------------------------------
-      # 5. Build Blender deps (USD, OIIO, OSL, etc.)
-      # -------------------------------------------------------
-      - name: Build deps
-        run: |
-          if [ ! -d "build_linux_aarch64/deps/Release" ]; then
-            make deps -j$(nproc)
-          else
-            echo "Deps cached — skipping build."
-          fi
+          - name: Build deps
+            run: |
+              echo "Using libtool from: $(which libtool)"
+              echo "LIBTOOL=$LIBTOOL"
+      
+              if [ ! -d "build_linux_aarch64/deps/Release" ]; then
+                make deps -j$(nproc)
+              else
+                echo "Deps cached — skipping build."
+              fi              
+
 
       # -------------------------------------------------------
       # 6. Build Blender release
