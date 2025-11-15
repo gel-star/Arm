@@ -129,14 +129,10 @@ jobs:
       - name: Check version
         run: libtool --version
 
-      - name: Fix libtool macros for SQLite
+      - name: Override system libtool macros
         run: |
-          SQLITE_DIR=$(find . -type d -path "*/external_sqlite" | head -n 1)
-          echo "Found SQLite dir: $SQLITE_DIR"
-          cd "$SQLITE_DIR"
-          aclocal
-          libtoolize --force
-          autoreconf -fi
+          sudo cp /usr/local/share/aclocal/libtool.m4 /usr/share/aclocal/
+          sudo cp /usr/local/share/aclocal/lt*.m4 /usr/share/aclocal/
 
               
       # -------------------------------------------------------
