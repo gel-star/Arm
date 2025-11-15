@@ -141,16 +141,16 @@ jobs:
           /usr/local/bin/libtool --version
           libtool --version || true
 
-          - name: Build deps
-            run: |
-              echo "Using libtool from: $(which libtool)"
-              echo "LIBTOOL=$LIBTOOL"
-      
-              if [ ! -d "build_linux_aarch64/deps/Release" ]; then
-                make deps -j$(nproc)
-              else
-                echo "Deps cached — skipping build."
-              fi              
+      - name: Build deps
+        run: |
+          echo "Using libtool from: $(which libtool)"
+          echo "LIBTOOL=$LIBTOOL"
+  
+          if [ ! -d "build_linux_aarch64/deps/Release" ]; then
+            make deps -j$(nproc)
+          else
+            echo "Deps cached — skipping build."
+          fi              
 
 
       # -------------------------------------------------------
