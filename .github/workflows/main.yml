@@ -25,7 +25,7 @@ jobs:
       # 2. Install ccache
       # -------------------------------------------------------
       - name: Install ccache
-        run: sudo apt-get update && sudo apt-get install -y ccache
+        run: sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y ccache
 
       - name: Cache ccache
         uses: actions/cache@v4
